@@ -1,0 +1,324 @@
+---
+title: ''
+output: pdf_document
+---
+
+
+#  Non-linear Models
+
+## Introduction
+
+Standard linear regression models are applied when the behavior of economic agents is 
+approximated by continuous variables such as income, saving, expenditure, output, etc. But 
+there are many situations in which the dependent variable in a regression equation simply 
+represents a $\textbf{discrete choice}$  assuming only a limited number of values. Models involving 
+dependent variables of this kind are called limited (discrete) dependent variable models (also 
+called qualitative response models).\
+
+$\underline{Examples of choices:}$\
+a)  Whether to work or not \
+b)  Whether to attend formal education or not \
+c)  Choice of occupation \
+d)  Which brand of consumer durable goods to purchase \
+
+In all of the above situations, the variables are discrete valued. In examples (a) and (b), the 
+variables are binary (having only two possible values), whereas the variables in examples (c) 
+and (d) are multinomial (having more than two but a finite number of distinct values). In such 
+cases instead of standard regression models, we apply different methods of modeling and 
+analyzing discrete data. \
+
+**Qualitative choice analysis**\
+Qualitative choice models may be used when a decision maker faces a choice among a set of 
+alternatives meeting the following criteria: \
+.  The number of choices if finite \
+.  The choices are mutually exclusive (the person chooses only one of the alternatives)\ 
+.  The choices are exhaustive (all possible alternatives are included) \
+The first criterion is a binding one. We can always refine the available choices so that they can 
+satisfy the last two criteria. Throughout our discussion  we shall restrict ourselves to cases of 
+qualitative choice where the set of alternatives is binary. For the sake of convenience the 
+dependent variable is given a value of 0 or 1.\
+$\underline{Example:}$ Suppose the choice is whether to work or not. The discrete dependent variable we 
+are working with will assume only two values 0 and 1:\
+\begin{align*}
+Y_i=\left\lbrace ^{1\longrightarrow if i^{th} individual is working / seeking work}_{0\longrightarrow if i^{th} individual is not working}\right\rbrace 
+\end{align*}
+where i = 1, 2, ., n. The independent variables (called factors) that are expected to affect an 
+individual's choice may be $X_1$= age, $X_2$= marital status,$X_3$= gender, $X_4$ =education, etc. 
+These are represented by a matrix X. If we have k factors, the vector of factors for the $i^{th}$ individual is given by:
+\begin{align*}
+X_i ( x_{1i} , x_{2i}, x_{3i} . . . , x_{ki} ) i=1, 2, . . ., n
+\end{align*}
+
+**The regression approach**\
+The economic interpretation of discrete choice models is typically based on the principle of 
+utility maximization leading to the choice of, say, A over B if the utility of A exceeds that of B. 
+For example, let $U^1$ be the utility from working/seeking work and let $U^0$ be the utility form 
+not working. Then an individual will choose to be part of the labour force if $U^1-U^0>0$, 
+and this decision depends on a number of factors X.\
+
+The probability that the $i^{th}$
+individual chooses alternative 1 (i.e. works/seeks work) given 
+his/her individual characteristics $X_i$ is:
+\begin{align*}
+P_i=Prob(Y_i=1 | X_i)=Prob[(U^1-U^0)_i>0] =G(X_i,\beta) 
+\end{align*}
+The vector of parameters $\beta (\beta=(\beta_1,\beta_2,...,\beta_k)')$ measures the impact of changes in X (say, 
+age, marital status, gender, education, etc) on the probability of labour force participation.\
+And the probability that the $i^{th}$
+individual chooses alternative 0 (i.e. not to work) is given by:
+\begin{align*}
+Prob(Y_i=0| X_i)=1-P_i=1-Prob[(U^1-U^0)_i>0] =1-G(X_i,\beta) 
+\end{align*}
+Here $P_i$ is called the  $\textbf{response probability}$ and $(1-P_i)$ is called the $\textbf{ non-response }$  $\textbf{probability}$\
+
+The mean response of the $i^{th}$
+individual given his/her individual characteristics $X_i$ is:
+\begin{align*}
+E(Y_i|X_i)=1\times{Prob(Y_i=1|X_i)}+0\times{Prob(Y_i=0|X_i)}=1\times{G(X_i,\beta)}+0\times{G(X_i,\beta)}=G(X_i,\beta)
+\end{align*} 
+The problem is thus to choose the appropriate form of $G(X_i,\beta)$.\
+\underline{\textbf{Case 1: The linear probability model}}\
+The linear probability model defines $G(X_i,\beta)$ as: $G(X_i,\beta)$=$X_i\beta$\
+The regression model is thus:
+\begin{align*}
+Y_i=X_i\beta+\mathcal{E}_i.............(3.1.1)
+\end{align*}
+This is the usual linear regression model. The drawbacks of this model are:\
+1. The right hand side of equation (3.1.1) is a combination of discrete and continuous variables
+while the left hand side variable is discrete.\
+2. Usually we arbitrarily (or for convenience) use 0 and 1 for $Y_i$ . If we use other values for $Y_i$ , say 3 and 4, $\beta$ will also change even if the vector of factors $X_i$ remains unchanged. \
+3.$\mathcal{E}_i$ assumes only two values:
+\begin{center}
+	if $Y_i=1$ then $\mathcal{E}_i=1-X_i\beta$ (with prob. $P_i$)\
+	if $Y_i= 0$ then $\mathcal{E}_i=-X_i\beta$ (with prob. $1-P_i$ )\
+\end{center}
+Consequently, $\mathcal{E}_i$ is not normally distributed but rather has a discrete (binary) probability 
+distribution defined as:
+\begin{center}
+\begin{tabular}{c|c}
+	$ \mathcal{E}_i $ & Probability  \\ 
+	\hline 
+	$ 1-X_i\beta $ & $ P_i $ \\ 
+	$ -x_i\beta $ & $ 1-P_i $ \\ 
+\end{tabular} 
+\end{center}
+4. The expectation (mean) of $\mathcal{E}_i$ conditional on the exogenous variables $X_i$ is (from the 
+above table):
+\begin{align*}
+E(\mathcal{E}_i|x_i)=(1-X_i\beta)P_i+(-x_i\beta)(1-P_i)=P_i-X_i\beta
+\end{align*}
+Setting this mean to zero as in the classical regression analysis means:
+\begin{align*}
+E(\mathcal{E}_i|x_i)=0 \Rightarrow P_i=X_i\beta
+\end{align*}
+So the original model (1) becomes:
+\begin{align*}
+Y_i=P_i+\mathcal{E}_i \Rightarrow \mathcal{E}_i=Y_i-P_i
+\end{align*}
+That is, the binary (discrete) disturbance term $\mathcal{E}_i$ is equal to the difference between a binary 
+variable $Y_i$ and a continuous response probability $P_i$. Clearly this does not make sense. \
+5. We know that the probability of an event is always a number between 0 and 1 (inclusive).
+But here we can see that:
+\begin{align*}
+P_i=Prob(Y_i=1|X_i)=X_i\beta
+\end{align*}
+i .e.,$P_i$ can take on any value (even negative numbers) leading to nonsense probabilities.\
+
+
+**Case 2: The latent regression approach**\
+
+The outcome (or observed occurrence) of a discrete choice may be considered to be an 
+indicator of an underlying, unobservable continuous variable which may be called 'propensity 
+to choose a given alternative'. Such a variable is characterized by the existence of a threshold, 
+where crossing a threshold means switching from one alternative to another. For instance, a 
+married woman's propensity to join the labour force may be directly related to the wage that 
+she may receive in the market, which in turn may depend on her level of education, experience, 
+etc. Whether she actually joins the work force or not is likely to depend on whether her market 
+wage does or does not exceed her threshold or 'reservation' wage.\
+
+Example: 
+Let an individual's propensity to enter the labour force (or to work) be an unobservable 
+(latent) variable $Y_i^*$ such that:
+\begin{align*}
+Y_i^*=X_i\beta+\mathcal{E}_i=X_{1i}\beta_1+X_{2i}\beta_2+...+X_{ki}\beta_k+\mathcal{E}_i
+\end{align*}
+What we actually observe here is the individual's decision to work or not $(Y_i)$ and the set of 
+individual factors such as age, sex, marital status, level of education, experience, etc ($X_i(X_{1i},X_{2i},X_{2i},...,X_{ki})$) where:
+\begin{align*}
+Y_i=\left\lbrace ^{1\longrightarrow~~ if~~ Y_i^{*}>c}_{0\longrightarrow ~~if~~ Y_i^{*}\leq c}\right\rbrace 
+\end{align*}
+where c is a floor for the propensity variable (or a threshold). The
+obability of labour force 
+participation of the $i^{th}$ individual given his/her personal background $X_i$ is:
+\begin{align*}
+Prob(Y_i=1|X_i)=Prob(Y_i^*>c|X_i)=Prob(X_i\beta+\mathcal{E}_i>c)=Prob(\mathcal{E}_i>c-X_i\beta|X_i)\\
+\end{align*}
+Similarly,
+\begin{align*}
+Prob(Y_i=0|X_i)&=Prob(Y_i^*\leq c|X_i)\\
+&=1-Prob(\mathcal{E}_i>c-X_i\beta|X_i)\\
+&=1-Prob(Y_i=1|X_i)
+\end{align*}
+The expectation (mean) of $Y_i$ conditional on the exogenous variables $X_i$ is:
+\begin{align*}
+E(Y_i|X_i)&=1\times Prob(Y_i=1|X_i)+0\times Prob(Y_i=0|X_i)\\
+&=Prob(Y_i=1|X_i)\\
+&=Prob(\mathcal{E}_i>c-X_i\beta|X_i)
+\end{align*}
+The general form of the latent regression model is:
+\begin{align*}
+E(Y_i|X_i)=Prob(Y_i=1|X_i)=Prob(\mathcal{E}_i>c-X_i\beta|X_i)=G(X_i\beta)
+\end{align*}
+We can predict how the probability of participating in the labour force ($Y_i$) will change as individuals' characteristics $X_i$ change if we choose either the correct functional form of $G(X_i\beta)$ or the appropriate probability distribution of $\mathcal{E}_i$.\
+$\underline{Note}$\
+
+
+The $\textbf{cumulative distribution function(CDF)}$ of a random variable X is defined as:
+\begin{align*}
+F_X(x)=P(X\leq x)=\int_{-\infty}^{x}{f_X(t)dt}
+\end{align*}
+where  $f_X(x)$ is the  probability density function(PDF) of X. If the functional form of  $f_X$ is known, then we can evaluate $P(X\leq x)$ by integration. The PDF can be obtained from the 
+CDF as:
+\begin{align*}
+\frac{d(f_X(x))}{dx}=f_X(x)
+\end{align*}
+Now, if we have a latent regression model of the form:
+\begin{align*}
+Prob(Y_i=1|X_i)=Prob(\mathcal{E}_i<c-X_i\beta|X_i)
+\end{align*}
+and if the functional form or the probability distribution of $\mathcal{E}_i$, say,$f_{\mathcal{E}}$ is known, then the
+response probability can be evaluated since:
+\begin{align*}
+Prob(\mathcal{E}_i<c-X_i\beta|X_i)=F_{\mathcal{E}}(X_i\beta)=\int_{-\infty}^{X_i\beta}{f_{\mathcal{E}}(t)dt}
+\end{align*}
+
+
+
+## Intrinsically Non-linear Models
+
+### The probit and logit models
+
+Setting $G(X_i\beta)$ to be the  normal distribution or assuming that $\mathcal{E}_i$ follows the  $\textbf{normal 
+distribution}$ (that is, $f_\mathcal{E}$ is the normal distribution) gives rise to the  $\textbf{probit model}$. Since the
+normal distribution is symmetric about its mean, we have:
+\begin{align*}
+Prob(\mathcal{E}_i>-X_i\beta|X_i)=Prob(\mathcal{E}_i<X_i\beta|X_i)
+\end{align*}
+Thus, the probability of participating in the labour force ($Y_i=1$) given an individual's 
+characteristics $X_i$ is given by:
+\begin{align*}
+Prob(Y_i=1|X_i)&=Prob(\mathcal{E}_i<X_i\beta|X_i)\\
+&=\int_{-\infty}^{X_i\beta}{f_{\mathcal{E}}(t)dt}=\int_{-\infty}^{X_i\beta}{\phi(t)dt}=\Phi(X_i\beta)
+\end{align*}
+where  $\phi(\cdot)$ is the standard normal PDF and $\Phi(\cdot)$ is the standard normal CDF. Thus, we can
+read the probabilities from the standard normal distribution table.\
+Setting $G(X_i\beta)$ to be the  $\textbf{logistic distribution}$ or assuming that $\mathcal{E}_i$ follows the  $\textbf{logistic 
+distribution}$ gives rise to the $\textbf{logit model}$. The logistic distribution function is given by:
+\begin{align*}
+Prob(\mathcal{E}_i<X_i\beta)=\Lambda(X_i\beta)=\frac{e^{X_i\beta}}{1+e^{X_i\beta}}
+\end{align*}
+Here the response probability $Prob(Y_i=1/X_i)$  is evaluated as:
+\begin{align*}
+P_i=Prob(Y_i=1|X_i)&=Prob(\mathcal{E}_i>-X_i\beta|X_i)~~~ symmetery\\
+&=1-Prob(\mathcal{E}_i<-X_i\beta|X_i)\\
+&=1-\Lambda(-X_i\beta)\\
+&=1-\frac{e^{-X_i\beta}}{1+e^{-X_i\beta}}\\
+&=\frac{e^{X_i\beta}}{1+e^{X_i\beta}}
+\end{align*}
+Similarly, the non-response probability is evaluated as:
+\begin{align*}
+1-P_i&=Prob(Y_i=0|X_i)\\
+&=1-\frac{e^{X_i\beta}}{1+e^{X_i\beta}}=\frac{1}{1+e^{X_i\beta}}
+\end{align*}
+Note that the response and non- response probabilities both lie in the interval  [0 , 1] , and 
+hence, are interpretable.\
+
+For the logit model, the ratio:
+\begin{align*}
+\frac{P_i}{1-P_i}=\frac{Prob(Y_i=1|X_i)}{Prob(Y_i=0|X_i)}&=\frac{\frac{e^{X_i\beta}}{1+e^{X_i\beta}}}{\frac{1}{1+e^{X_i\beta}}}\\
+&=e^{X_i\beta}=e^{{X_{1i}\beta}+{X_{2i}\beta_2}+...+{X_{ki}\beta_k}}
+\end{align*}
+is the  $\textbf{ratio of the odds}$ of $Y_i=1$ against $Y_i=0$. The natural logarithm of the odds ($\textbf{log-odds}$) is:
+\begin{align*}
+\ln\left[ \frac{P_i}{1-P_i}\right]={X_i\beta}={{X_{1i}\beta}+{X_{2i}\beta_2}+...+{X_{ki}\beta_k}}
+\end{align*}
+Thus, the log-odds is a linear function of the explanatory variables. The above transformation 
+has certainly helped the popularity of the logit model. Note that for the linear probability model 
+it is $P_i$ that is assumed to be a linear function of the explanatory variables.\
+$\underline{Example:}$ Suppose $P_i=Prob(Y_i=1/X_i)$ is the probability that the $i^{th}$ individual chooses to 
+work given his/her individual characteristics $X_i$ and suppose that the odds is calculated to be $e^{X_i\beta}$. The interpretation of this is that the probability of joining the labour force is  $\textbf{twice 
+as likely}$ as staying at home given the individual characteristics $X_i$.\
+
+
+
+## Estimation of Intrinsically non-linear Models
+
+### The maximum likelihood estimation
+
+$\underline{Note}(\textbf{the Bernoulli distribution})$\
+Let $Y_i$ be a random variable which can take on the value 1 with probability $P_i$ (called probability of success), and the value 0 with probability ($1-P_i$) (called probability of failure). If
+the observations are independent, then the probability distribution of $Y_i$ is given by:
+\begin{align*}
+Prob(Y_i=y_i )=P_i^{yi}{(1-P_i)^{1-y_i}}~~~~~i=1,2,...,n........(3.4.1)
+\end{align*}
+We have seen earlier that:
+\begin{center}
+$Prob(Y_i=1|X_i)$=$G(X_i\beta)$ and $Prob(Y_i=0|X_i)=1-G(X_i\beta)$\
+\end{center}
+Thus, each observation $Y_i$ may be treated as a single draw from a Bernoulli distribution with 
+probability of success ($Y_i= 1$) equal to $G(X_i\beta)$ and probability of failure ($Y_i = 0$) equal to $1-G(X_i\beta)$ . Using equation (3.4.1), the probability distribution of $Y_i$ is given by:
+\begin{align*}
+Prob(Y_i=1|X_i) = [G(X_i\beta) ]^{y_i}[1-G(X_i\beta)]^{1-y_i}~~~~~i=1,2,...,n.
+\end{align*}
+Since the observations are independent, the  $\textbf{likelihood function}$ is simply the product of the 
+individual probabilities of the $Y_i's$ ,  i=1, 2, . . ., n, that is,
+\begin{align*}
+L&= Prob(Y_1=y_1,Y_2=y_2,...,Y_n=y_n/X)\\
+&=Prob(Y_1=y_1)\times Prob(Y_2=y_2)\times...\times Prob(Y_n=y_n)\\
+&=\Pi_{i=i}^{n} [G(X_i\beta) ]^{y_i}[1-G(X_i\beta)]^{1-y_i}
+\end{align*}
+Taking natural logarithms, we get the $\textbf{log-likelihood function}$:
+\begin{align*}
+\ln(L)=\sum_{i=1}^{n}[y_i\ln[G(X_i\beta)]+(1-y_i)\ln[1-G(X_i\beta)]]
+\end{align*}
+Taking the derivative with respect to $\beta$ and setting the result to zero we have:
+\begin{align*}
+\frac{\partial\ln(L)}{\partial\beta}=\sum_{i=1}^{n}\left[ \frac{y_ig_i}{G_i}+(1-y_i)\frac{-g_i}{1-G_i}\right]X_i=0.......(3.4.2)
+\end{align*}
+where $G_i=G(X_i\beta)$ and $g_i=\frac{\partial G(X_i\beta)}{\partial\beta}$.\
+These equations are highly non-linear, and we need to apply numerical methods (numerical 
+optimization methods) to obtain the solutions.\
+If we consider a model with only one explanatory variable X, and if 
+$G(X_i\beta)$ is the logit model:
+\begin{align*}
+G(X_i\beta)=\frac{e^{X_i\beta}}{1+e^{X_i\beta}}=\frac{e^{\alpha+X_i\beta}}{1+e^{\alpha+X_i\beta}}
+\end{align*}
+then log likelihood function is given by:
+\begin{align*}
+\ln(L)&=\sum_{i=1}^{n}\left[ y_i\ln[\left( \frac{e^{\alpha+X_i\beta}}{1+e^{\alpha+X_i\beta}}\right) +(1-y_i)\ln\left( 1-\frac{e^{\alpha+X_i\beta}}{1+e^{\alpha+X_i\beta}}\right) \right]\\
+&=\sum_{i=1}^{n}\left[ y_i\ln[\left( \frac{e^{\alpha+X_i\beta}}{1+e^{\alpha+X_i\beta}}\right) +(1-y_i)\ln\left(\frac{1}{1+e^{\alpha+X_i\beta}}\right) \right] \\
+&=\sum_{i=1}^{n}\left[ y_i\ln[e^{\alpha+X_i\beta}]-y_i\ln\left(1+e^{\alpha+X_i\beta}\right)-(1-y_i)\ln\left( 1+e^{\alpha+X_i\beta}\right)   \right] \\
+&=\sum_{i=1}^{n}\left[ y_i\ln[e^{\alpha+X_i\beta}]-\ln\left( 1+e^{\alpha+X_i\beta}\right)   \right]\\
+&=\sum_{i=1}^{n}\left[ y_i\ln\left( {\alpha+X_i\beta}\right) -\ln\left( 1+e^{\alpha+X_i\beta}\right)   \right]
+\end{align*}
+The first order conditions are:
+\begin{align*}
+\frac{\partial\ln(L)}{\partial\beta}=0 \Rightarrow \sum_{i=1}^{n}\left[ y_i-\frac{e^{\tilde{\alpha}+\tilde{\beta}X_i}}{1+e^{\tilde{\alpha}+\tilde{\beta}X_i}}\right]X_i=0......(3.4.3a)\\
+\frac{\partial\ln(L)}{\partial\alpha}=0 \Rightarrow \sum_{i=1}^{n}\left[ y_i-\frac{e^{\tilde{\alpha}+\tilde{\beta}X_i}}{1+e^{\tilde{\alpha}+\tilde{\beta}X_i}}\right]=0.........(3.4.3b)
+\end{align*}
+These two equations can be solved for $\tilde{\beta}$
+and $\tilde{\alpha}$. Since both equations are non-linear functions 
+of $\tilde{\beta}$
+and $\tilde{\alpha}$, the solutions are obtained using numerical methods.\
+In the classical linear regression model we have $G(X_i\beta)=\alpha+\beta X_i$ and equations (3.4.3a) and 
+(3.4.3b) become:
+\begin{align*}
+\sum_{i=1}^{n}[Y_i-(\hat{\alpha}+\hat{\beta}X_i)]X_i=0 &\Longrightarrow \sum_{i=1}^{n}{Y_iX_i}=\hat{\alpha}\sum_{i=1}^{n}{X_i}+\hat{\beta}\sum_{i=1}^{n}{X_i^2}\\
+\sum_{i=1}^{n}[Y_i-(\hat{\alpha}+\hat{\beta}X_i)]=0 &\Longrightarrow \sum_{i=1}^{n}{Y_i}=n\hat{\alpha}+\hat{\beta}\sum_{i=1}^{n}{X_i}
+\end{align*}
+These two equations are simply the  $\textbf{normal equations}$ which can easily be solved to get the 
+ordinary least squares (OLS) estimators of $\beta$ and $\alpha$.\
+
+**Example**\
+
+

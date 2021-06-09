@@ -1,0 +1,149 @@
+---
+title: ''
+output: pdf_document
+---
+
+# Introduction
+
+##  Definition of Econometrics 
+
+**Definition:** Literal meaning, the word ‘econometrics’ means measurement in economics: **"econo-metrics"**.\
+- In general, econometrics is the application of statistical and mathematical methods to the analysis of economic data with a purpose of giving empirical content to economic theories **and verifying or refuting them**.\
+- Econometrics aims at giving **empirical content** to economic relationships. 
+
+- The **exciting** thing about econometrics is its concern for **verifying or refuting**
+economic laws. These economic laws or hypotheses are testable with economic data. 
+
+
+\textquotedblleft Econometricsis about how we can use theory and data from economics, business, and the
+social sciences, along with tools from statistics, to answer **how much** questions.\textquotedblright\
+
+
+In economics we express our ideas about
+relationships between economic variables using the mathematical concept of a function. For
+example, to express a relationship between income and consumption, we may write\
+\begin{align*}
+CONSUMPTION=f(INCOME)
+\end{align*}
+which says that the level of consumption is some function,$f(*)$, of income.\
+The supply of an agricultural commodity such as beef might be written as\
+\begin{align*}
+Q^s=f(P,P^c,P^f)
+\end{align*}
+
+where $Q^s$ is the quantity supplied, P is the price of beef, $P^c$ is the price of competitive
+products in production (e.g., the price of hogs), and $P^f$ is the price of factors or inputs (e.g., the price of corn) used in the production process.\
+Each of the above equations is a general economic model that describes how we visualize the way in which economic variables are interrelated. Economic models of this type guide our economic analysis.\
+For most economic decision or choice problems, it is not enough to know that certain economic variables are interrelated, or even the direction of the relationship. In addition, we
+must understand the magnitudes involved. That is, we must be able to say how much a change in one variable affects another.\
+
+
+
+
+
+
+
+##  Economic Model Building
+
+- The first task an econometrician faces is that of **formulating an econometric model**. 
+- **What is a model**? 
+  - A model is a simplified representation of a real-world process. 
+  - The goal of a model is to provide a simple low-dimensional summary of a dataset.
+  - The goal of a model is not to uncover truth, but to discover a simple
+approximation that is still usef
+- Eg., ‘the demand for oranges 
+depends on the price of oranges’ is a simplified representation since there are a host of other variables
+- simple models are easier: 
+   - To understand
+   - To communicate
+   - To test empirically with data
+* parsimonious model
+* two criticisms with simple model
+   - The model is oversimplified
+   - The assumptions are unrealistic
+
+An econometric model consists of the following: 
+
+a) A set of **behavioural equations** derived from the economic model. These equations involve some
+observed variables and some ‘disturbances’.
+b) A statement of whether there are **errors** of observation in the observed variables.
+c) A **specification of the probability distribution** of the ‘disturbances ‘.
+
+
+
+## Scope and Objective of Econometrics
+
+- Developing statistical methods for the estimation of economic relationships,
+- Testing economic theories and hypothesis,
+- Evaluating and applying economic policies,
+- Forecasting,
+- Collecting and analyzing non experimental or observational data.
+
+**Components of Econometrics**\
+
+- Econometric inputs:
+  - Economic Theory
+  - Mathematics
+  - Statistical Theory
+  - Data
+  - Interpretation
+- Econometric outputs:
+  - Estimation - Measurement
+  - Inference - Hypothesis testing
+  - Forecasting - Prediction
+  - Evaluation
+
+**We learned statistical methods so why do we need a separate discipline?**\
+
+- The reason is as follows: econometrics focuses on the analysis of **non experimental** economic data.
+- Non experimental data (or observational data) are not
+obtained through **controlled experiments** on economic agents(consumers, firms, households, sectors, countries, etc.)
+- Experimental data are collected in **laboratory environments in natural sciences**.
+-  but for social sciences, econometrics develops special methods to handle
+non-experimental data
+
+## Steps in Econometric Analysis
+
+- Formulation of theory or hypothesis,
+- Specifcation of economic (mathematical) model,
+- Specifcation of econometric model,
+- Collecting data,
+- Estimation of parameters,
+- Hypothesis tests,
+- Forecasting/Prediction),
+- Evaluation of results for policy analysis or decision making
+
+
+
+1. We begin with an **economic model** which is a set of **assumptions** that describes the behaviour of an
+**economic phenomenon**.
+2. Formulation (specification) of an economic model: a **set of equations** derived from the economic
+model that involve some **observed variables and some ‘disturbances’**.
+3. Collection of **relevant data** on variables implied by the econometric model.
+4. **Estimation of model parameters** using mathematical statistics and probability theory.
+5. We **conduct tests** to verify whether:
+   - The specification of the model is correct
+   - Model assumptions are valid
+6. Based on step:
+   - If the **model failed to pass the specification testing and diagnostic checking step**, then
+**revise** .
+   - If the model passes , then one has to
+**proceed**with testing any hypothesis of interest (e.g. which of the explanatory variables
+significantly affect the response  variable?).
+7. We use the estimated model for **predictions and policy**
+
+
+**ECONOMIC MODEL vs. ECONOMETRIC MODEL**\
+
+- Example1: **consumption**, c, a linear function of **income**, i
+$$c=f(i)=\beta_0+\beta_1income~~Economic~ model(Mathematical~Model)$$
+$$c=f(i)=\beta_0+\beta_1income+\epsilon~~Econometric~ mode$$
+- Example2 - Job Training and Worker Productivity
+$$wage = f (educ; exper; training)$$
+where
+$wage : hourly~~wage (in ~~dollars)~~$
+$educ : level~~ of~~ education (in ~~years)$
+$exper : level~~ of~~ workforce~~ experience (in~ years)~~$
+$training : weeks ~spent ~in ~job~ training.$
+$$wage =\beta_0+\beta_1educ+\beta_2exper+\beta_3training :~~Economic~Model$$
+$$wage =\beta_0+\beta_1educ+\beta_2exper+\beta_3training +\epsilon:~~Econometric~Model $$
