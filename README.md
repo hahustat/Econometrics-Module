@@ -1,6 +1,6 @@
 # Econometrics-Module(stat3061)
 
-* dataset of this course is avaiable at [here](https://github.com/hahustat/ecostatm). To follow this module must be download the adatset as follow:
+* dataset of this course is avaiable  [here](https://github.com/hahustat/ecostatm). To follow this module must be download the adatset as follow:
  # Install the released version from CRAN
 install.packages("ecostatm")
 
