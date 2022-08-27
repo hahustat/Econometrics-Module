@@ -6,7 +6,7 @@
 
 
 # Install the development version from GitHub
-devtools::install_github("hahustat/ecostatm")
+devtools::install_github("hahustat/ecostatmodule")
 
- # Install the released version from CRAN but not yet
-install.packages("ecostatm")
+ # You will  install the released version from CRAN but not yet
+install.packages("ecostatmodule")
